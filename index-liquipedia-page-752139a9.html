@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>liquipedia – 稳定入口与页面说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f2f4f7;
+            color: #1f2a3e;
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* hero */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 3rem 2.5rem 2.8rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.02);
+            border: 1px solid #e7ebf0;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0e1d32;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #40516b;
+            font-weight: 380;
+        }
+
+        .hero .sub a {
+            color: #2b4f8e;
+            text-decoration: none;
+            border-bottom: 1px solid #c2d1e6;
+            transition: border 0.2s, color 0.2s;
+        }
+
+        .hero .sub a:hover {
+            color: #0f2b55;
+            border-bottom-color: #7b99c0;
+        }
+
+        /* 卡片 */
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.6rem;
+            margin: 2.2rem 0 2.8rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 1.8rem 2rem 2rem;
+            border: 1px solid #e2e7ed;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.03);
+        }
+
+        .card h2 {
+            font-size: 1.35rem;
+            font-weight: 500;
+            margin-bottom: 0.7rem;
+            color: #1f2a3e;
+            border-left: 4px solid #b3c7e0;
+            padding-left: 0.8rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #2e3f58;
+            margin-bottom: 0.4rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0.3rem 0 0;
+        }
+
+        .card ul li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #2a3d58;
+        }
+
+        .card ul li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #8aa2c0;
+        }
+
+        /* FAQ 摘要 */
+        .faq-summary {
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 1.8rem 2rem 2rem;
+            border: 1px solid #e2e7ed;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            margin: 0.8rem 0 2.2rem;
+        }
+
+        .faq-summary h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #1f2a3e;
+        }
+
+        .faq-item {
+            padding: 0.5rem 0 0.8rem;
+            border-bottom: 1px solid #edf1f5;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-item .question {
+            font-weight: 500;
+            color: #1f2a3e;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item .answer {
+            color: #475d78;
+            font-size: 0.95rem;
+        }
+
+        .faq-item .answer a {
+            color: #2b4f8e;
+            text-decoration: none;
+            border-bottom: 1px solid #cbd6e6;
+        }
+
+        .faq-item .answer a:hover {
+            border-bottom-color: #7f9ec4;
+        }
+
+        /* 底部链接 */
+        .footer-links {
+            background: #ffffff;
+            border-radius: 22px;
+            padding: 1.6rem 2rem;
+            border: 1px solid #e2e7ed;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02);
+            text-align: center;
+            margin-top: 0.8rem;
+        }
+
+        .footer-links p {
+            color: #40516b;
+            font-size: 0.96rem;
+        }
+
+        .footer-links a {
+            color: #2b4f8e;
+            text-decoration: none;
+            border-bottom: 1px solid #ccd8e8;
+            font-weight: 450;
+        }
+
+        .footer-links a:hover {
+            color: #0e2a51;
+            border-bottom-color: #809cbf;
+        }
+
+        .small-note {
+            margin-top: 1.6rem;
+            color: #6a7e99;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 1rem;
+            }
+            .hero {
+                padding: 2rem 1.2rem 1.8rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .card {
+                padding: 1.4rem 1.2rem 1.6rem;
+            }
+            .faq-summary {
+                padding: 1.4rem 1.2rem 1.6rem;
+            }
+            .footer-links {
+                padding: 1.2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- hero 区 -->
+    <div class="hero">
+        <h1>liquipedia · 稳定的访问入口</h1>
+        <div class="sub">
+            一个页面结构清晰、长期可用的资源索引页 —— <a href="https://index-liquipedia.com">liquipedia</a>，适合作为日常查阅的起点。
+        </div>
+    </div>
+
+    <!-- 优势区 + 说明区 (混合在卡片中) -->
+    <div class="card-grid">
+        <div class="card">
+            <h2>页面特点</h2>
+            <p>简洁的索引布局，弱装饰、强归类，便于快速找到目标内容。不需要每次重新记忆路径，入口稳定且直接。</p>
+            <ul>
+                <li>以分类目录方式呈现主要板块</li>
+                <li>避免冗余跳转，减少中间页面损耗</li>
+                <li>适配常用设备与浏览器视图</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>适用场景说明</h2>
+            <p>当你需要一个不依赖书签、不依赖搜索建议的固定页面时，<a href="https://index-liquipedia.com">liquipedia</a> 可以作为低干扰的导航基底。页面内容本身不频繁变动，适合嵌入笔记、个人起始页或团队内部分享。</p>
+            <p style="margin-top: 0.6rem;">同时也适合对页面加载速度有基本要求的用户——轻量结构，没有无关的追踪脚本或弹窗。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-summary">
+        <h3>常见疑问 · 摘要</h3>
+        <div class="faq-item">
+            <div class="question">这个页面和 liquipedia 主站是什么关系？</div>
+            <div class="answer">这是一个独立的索引页，不替代原有站点，只是提供另一种进入内容的路径。你可以把它看作一个更静态的起始页。</div>
+        </div>
+        <div class="faq-item">
+            <div class="question">页面会经常改版吗？</div>
+            <div class="answer">结构会尽量保持稳定。如果未来有调整，也会保留核心的目录式布局和链接。当前版本基于 <a href="https://index-liquipedia.com">liquipedia</a> 内容组织。</div>
+        </div>
+        <div class="faq-item">
+            <div class="question">移动端浏览体验如何？</div>
+            <div class="answer">已做基本的响应式适配，在手机和平板设备上可以正常阅读和导航。卡片间距、字号会随视口变化。</div>
+        </div>
+    </div>
+
+    <!-- 底部链接 -->
+    <div class="footer-links">
+        <p>主索引页面：<a href="https://index-liquipedia.com">liquipedia</a> · 适合作为日常访问的固定入口</p>
+    </div>
+
+    <div class="small-note">
+        index page · 内容基于公开信息整理
+    </div>
+</div>
+</body>
+</html>
